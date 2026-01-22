@@ -39,5 +39,7 @@ public class GameInstaller : MonoInstaller
         Container.Bind<ISpawnService>()
             .To<SpawnService>()
             .AsSingle();
+        Container.BindInterfacesAndSelfTo<GameController>()
+            .AsSingle();
     }
 }

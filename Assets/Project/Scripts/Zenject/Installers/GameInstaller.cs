@@ -35,5 +35,9 @@ public class GameInstaller : MonoInstaller
         Container.Bind<ChipTypeDatabase>()
             .FromInstance(chipTypeDatabase)
             .AsSingle();
+
+        Container.Bind<ISpawnService>()
+            .To<SpawnService>()
+            .AsSingle();
     }
 }

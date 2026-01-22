@@ -25,17 +25,20 @@ public class GameInstaller : MonoInstaller
             .AsSingle();
 
         Container.BindFactory<CellView, CellView.Factory>()
-        .FromComponentInNewPrefab(cellViewPrefab)
-        .AsSingle();
+            .FromComponentInNewPrefab(cellViewPrefab)
+            .AsSingle();
 
         Container.Bind<ICellViewFactory>()
             .To<CellViewFactory>()
             .AsSingle();
 
         Container.Bind<IBoardView>()
-        .To<BoardView>()
-        .FromComponentInHierarchy()
-        .AsSingle();
+            .To<BoardView>()
+            .FromComponentInHierarchy()
+            .AsSingle();
+
+        Container.BindInstance(mainCanvas)
+            .AsSingle();
 
         Container.Bind<ChipTypeDatabase>()
             .FromInstance(chipTypeDatabase)
@@ -49,11 +52,25 @@ public class GameInstaller : MonoInstaller
             .AsSingle();
 
         Container.BindFactory<FloatingMessageView, FloatingMessageView.Factory>()
-        .FromComponentInNewPrefab(messagePrefab);
+            .FromComponentInNewPrefab(messagePrefab);
+
+        Container.BindInterfacesAndSelfTo<MouseInputHandler>()
+            .AsSingle();
+
+        Container.Bind<IViewRaycaster>()
+            .To<ViewRaycaster>()
+            .AsSingle();
+
+        Container.Bind<IDragDropHandler>()
+            .To<DragDropHandler>()
+            .AsSingle();
+
+        Container.Bind<IMergeService>()
+            .To<MergeService>()
+            .AsSingle();
 
         Container.Bind<IMessageService>()
-        .To<FloatingMessageService>()
-        .AsSingle()
-        .WithArguments(mainCanvas);
+            .To<FloatingMessageService>()
+            .AsSingle();
     }
 }

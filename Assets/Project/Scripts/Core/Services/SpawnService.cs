@@ -17,7 +17,6 @@ public class SpawnService : ISpawnService
 
         if (emptyCells.Count == 0)
         {
-            Debug.Log("There are no empty cells");
             return false;
         }
 

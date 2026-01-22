@@ -849,8 +849,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boardView: {fileID: 1763911666}
+  mainCanvas: {fileID: 1621813705}
   chipViewPrefab: {fileID: 497165566471185865, guid: b9bbe703856ee7b4fb7e59082ef48592, type: 3}
   cellViewPrefab: {fileID: 5511112318003774762, guid: 3751acc362bb37841ba678210ad38c10, type: 3}
+  messagePrefab: {fileID: 2829556051283165621, guid: 253dd72482b37be46bab01b980e51c92, type: 3}
   chipTypeDatabase: {fileID: 11400000, guid: a51774cca37c5dc48912c9152a053915, type: 2}
 --- !u!1 &1621813701
 GameObject:
@@ -864,6 +866,7 @@ GameObject:
   - component: {fileID: 1621813705}
   - component: {fileID: 1621813704}
   - component: {fileID: 1621813703}
+  - component: {fileID: 1621813706}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -956,6 +959,23 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1621813706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621813701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &1763911662
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,8 @@
 
 https://github.com/user-attachments/assets/cef61d61-7309-408b-a2b7-50fda85e1131
 
+[![Play](https://img.shields.io/badge/Play-Itch.io-orange)](https://teobrunner.itch.io/chip-merge)
+
 ## 📖 Overview
 **Merge UI** is a test task implementation for a Unity Developer position, showcasing professional code architecture and custom system implementation. The project demonstrates the ability to create a fully functional merge puzzle game with a clean, maintainable codebase following SOLID principles.
 This project serves as a technical showcase for:

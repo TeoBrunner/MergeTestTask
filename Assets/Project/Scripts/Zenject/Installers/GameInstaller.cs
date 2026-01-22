@@ -3,6 +3,9 @@ using Zenject;
 
 public class GameInstaller : MonoInstaller
 {
+    [Header("Scene")]
+    [SerializeField] private BoardView boardView;
+
     [Header("Prefabs")]
     [SerializeField] private ChipView chipViewPrefab;
     [SerializeField] private CellView cellViewPrefab;
@@ -39,6 +42,7 @@ public class GameInstaller : MonoInstaller
         Container.Bind<ISpawnService>()
             .To<SpawnService>()
             .AsSingle();
+
         Container.BindInterfacesAndSelfTo<GameController>()
             .AsSingle();
     }

@@ -4,6 +4,10 @@ using Zenject;
 
 public class BoardView : MonoBehaviour, IBoardView
 {
+    [Header("Settings")]
+    [SerializeField] private float cellSpacing = 100f;
+
+    [Header("Prefabs")]
     [SerializeField] private RectTransform cellsParent; 
     [SerializeField] private RectTransform chipsParent; 
 
@@ -40,6 +44,13 @@ public class BoardView : MonoBehaviour, IBoardView
     private void CreateCellView(Cell cell)
     {
         var cellView = cellFactory.Create(cell, cellsParent);
+
+        Vector2 position = new Vector2(
+            (cell.Position.x - 1) * cellSpacing,
+            (cell.Position.y - 1) * cellSpacing
+        );
+        cellView.RectTransform.anchoredPosition = position;
+
         cellMap.Add(cell, cellView);
     }
 

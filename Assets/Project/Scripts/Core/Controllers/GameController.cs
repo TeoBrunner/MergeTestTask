@@ -5,12 +5,17 @@ public class GameController : IInitializable, IGameController
 {
     private readonly IBoardView boardView;
     private readonly ISpawnService spawnService;
+    private readonly IMessageService messageService;
     private Board boardData;
 
-    public GameController(IBoardView boardView, ISpawnService spawnService)
+    public GameController(
+        IBoardView boardView, 
+        ISpawnService spawnService,
+        IMessageService messageService)
     {
         this.boardView = boardView;
         this.spawnService = spawnService;
+        this.messageService = messageService;
     }
 
     public void Initialize()
@@ -22,7 +27,7 @@ public class GameController : IInitializable, IGameController
 
     public void OnSpawnButtonClicked()
     {
-        spawnService.TrySpawn(boardData, (cell, chip) =>
+        bool spawned = spawnService.TrySpawn(boardData, (cell, chip) =>
         {
             var chipView = boardView.CreateChipView(chip);
 
@@ -31,6 +36,10 @@ public class GameController : IInitializable, IGameController
 
             chipView.PlaySpawnAnimation();
         });
+        if (!spawned)
+        {
+            messageService.ShowMessage("There are no empty cells!");
+        }
     }
 
     public bool TryMoveChip(Cell fromCell, Cell toCell) => false;

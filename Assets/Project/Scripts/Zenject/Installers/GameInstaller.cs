@@ -5,10 +5,12 @@ public class GameInstaller : MonoInstaller
 {
     [Header("Scene")]
     [SerializeField] private BoardView boardView;
+    [SerializeField] private Canvas mainCanvas;
 
     [Header("Prefabs")]
     [SerializeField] private ChipView chipViewPrefab;
     [SerializeField] private CellView cellViewPrefab;
+    [SerializeField] private FloatingMessageView messagePrefab;
 
     [Header("Config")]
     [SerializeField] private ChipTypeDatabase chipTypeDatabase;
@@ -45,5 +47,13 @@ public class GameInstaller : MonoInstaller
 
         Container.BindInterfacesAndSelfTo<GameController>()
             .AsSingle();
+
+        Container.BindFactory<FloatingMessageView, FloatingMessageView.Factory>()
+        .FromComponentInNewPrefab(messagePrefab);
+
+        Container.Bind<IMessageService>()
+        .To<FloatingMessageService>()
+        .AsSingle()
+        .WithArguments(mainCanvas);
     }
 }

@@ -27,6 +27,11 @@ public class GameInstaller : MonoInstaller
             .To<CellViewFactory>()
             .AsSingle();
 
+        Container.Bind<IBoardView>()
+        .To<BoardView>()
+        .FromComponentInHierarchy()
+        .AsSingle();
+
         Container.Bind<ChipTypeDatabase>()
             .FromInstance(chipTypeDatabase)
             .AsSingle();
